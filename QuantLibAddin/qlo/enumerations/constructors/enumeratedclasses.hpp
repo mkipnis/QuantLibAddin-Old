@@ -114,12 +114,12 @@ namespace QuantLibAddin {
         const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process, const long& timeSteps);
     boost::shared_ptr<QuantLib::PricingEngine> CRR_Engine(
         const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process, const long& timeSteps);
-    boost::shared_ptr<QuantLib::PricingEngine> FDA_Engine(
-        const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process, const long& timeSteps);
-    boost::shared_ptr<QuantLib::PricingEngine> FDB_Engine(
-        const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process, const long& timeSteps);
-    boost::shared_ptr<QuantLib::PricingEngine> FDE_Engine(
-        const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process, const long& timeSteps);
+    //boost::shared_ptr<QuantLib::PricingEngine> FDA_Engine(
+    //    const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process, const long& timeSteps);
+    //boost::shared_ptr<QuantLib::PricingEngine> FDB_Engine(
+    //    const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process, const long& timeSteps);
+    // boost::shared_ptr<QuantLib::PricingEngine> FDE_Engine(
+    //    const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process, const long& timeSteps);
     boost::shared_ptr<QuantLib::PricingEngine> JOSHI_Engine(
         const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process, const long& timeSteps);
     boost::shared_ptr<QuantLib::PricingEngine> JR_Engine(
