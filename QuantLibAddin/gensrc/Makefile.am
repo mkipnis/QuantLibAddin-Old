@@ -124,7 +124,7 @@ EXTRA_DIST = .time-stamp \
 # [g - Guile addin]
 # [c - C addin]
 
-GENSRC_ARGS = -p
+GENSRC_ARGS = -esvp
 #GENSRC_ARGS = -vsled
 #if BUILD_EXCEL
 #    GENSRC_ARGS += -x
