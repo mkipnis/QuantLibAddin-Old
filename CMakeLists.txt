@@ -5,12 +5,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+message(STATUS "QuantLib Addin Install Dir: ${QLA_INSTALL_PREFIX}")
+
 include(ExternalProject)
-
-set(CMAKE_PREFIX_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
-
-# Define installation directory
-set(INSTALL_DIR ${CMAKE_BINARY_DIR}/install)
 
 # Define source directories
 set(SOURCE_ROOT ${CMAKE_SOURCE_DIR})
@@ -25,14 +22,14 @@ set(QUANTLIBADDIN_BUILD_DIR ${CMAKE_BINARY_DIR}/QuantLibAddin-build)
 
 find_package(Boost REQUIRED COMPONENTS filesystem regex)
 
-set(COMMON_CXXFLAGS "-I${Boost_INCLUDE_DIRS} -I${INSTALL_DIR}/include -std=c++17")
-set(COMMON_LDFLAGS "-L${Boost_LIBRARY_DIRS} -L${INSTALL_DIR}/lib")
+set(COMMON_CXXFLAGS "-I${Boost_INCLUDE_DIRS} -I${QLA_INSTALL_PREFIX}/include -std=c++17")
+set(COMMON_LDFLAGS "-L${Boost_LIBRARY_DIRS} -L${QLA_INSTALL_PREFIX}/lib")
 
 # gensrc
 ExternalProject_Add(gensrc
     SOURCE_DIR ${GENSRC_SOURCE_DIR}
     CONFIGURE_COMMAND ${GENSRC_SOURCE_DIR}/autogen.sh &&
-                      ${GENSRC_SOURCE_DIR}/configure --prefix=${INSTALL_DIR}
+                      ${GENSRC_SOURCE_DIR}/configure --prefix=${QLA_INSTALL_PREFIX}
     BUILD_COMMAND make
     INSTALL_COMMAND make install
     BUILD_IN_SOURCE 1
@@ -45,8 +42,8 @@ ExternalProject_Add(ObjectHandler
     CONFIGURE_COMMAND 
 		${OBJECTHANDLER_SOURCE_DIR}/autogen.sh && export CXXFLAGS=${COMMON_CXXFLAGS} && export LDFLAGS=${COMMON_LDFLAGS} &&
                       ${OBJECTHANDLER_SOURCE_DIR}/configure
-                        --prefix=${INSTALL_DIR}
-                        --exec-prefix=${INSTALL_DIR}
+                        --prefix=${QLA_INSTALL_PREFIX}
+                        --exec-prefix=${QLA_INSTALL_PREFIX}
                         --with-gensrc=${GENSRC_SOURCE_DIR}
                         --without-log4cxx
     BUILD_COMMAND make
@@ -59,7 +56,7 @@ ExternalProject_Add(QuantLib
     GIT_REPOSITORY https://github.com/lballabio/QuantLib.git
     GIT_TAG master
     CMAKE_ARGS
-        -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}
+        -DCMAKE_INSTALL_PREFIX=${QLA_INSTALL_PREFIX}
         -DCMAKE_BUILD_TYPE=Release
     INSTALL_DIR ${INSTALL_DIR}
 )
@@ -70,14 +67,14 @@ ExternalProject_Add(QuantLibAddin
     DEPENDS gensrc ObjectHandler
     CONFIGURE_COMMAND ${QUANTLIBADDIN_SOURCE_DIR}/autogen.sh &&
                       ${QUANTLIBADDIN_SOURCE_DIR}/configure
-                        --prefix=${INSTALL_DIR}
-                        --exec-prefix=${INSTALL_DIR}
+                        --prefix=${QLA_INSTALL_PREFIX}
+                        --exec-prefix=${QLA_INSTALL_PREFIX}
                         --with-gensrc=${GENSRC_SOURCE_DIR}
                         --enable-addin-cpp
                         --with-oh=${OBJECTHANDLER_SOURCE_DIR}
-			CXXFLAGS=${COMMON_CXXFLAGS}
+                        CXXFLAGS=${COMMON_CXXFLAGS}
                         LDFLAGS=${COMMON_LDFLAGS}
-    BUILD_COMMAND make
+    BUILD_COMMAND make -j 4
     INSTALL_COMMAND make install
     BUILD_IN_SOURCE 1
 )

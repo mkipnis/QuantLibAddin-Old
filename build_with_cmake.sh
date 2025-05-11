@@ -13,6 +13,6 @@ mkdir -p "$INSTALL_DIR"
 mkdir -p build
 cd build
 
-cmake .. -DCMAKE_INSTALL_PREFIX="$INSTALL_DIR"
+cmake .. -DQLA_INSTALL_PREFIX=${INSTALL_DIR}
 
-cmake --build . --target install --config Debug
+cmake --build .
