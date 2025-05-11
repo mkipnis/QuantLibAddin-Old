@@ -39,6 +39,8 @@
 #include <ql/interestrate.hpp>
 #include <ql/utilities/dataformatters.hpp>
 
+#include <ql/time/schedule.hpp>
+
 #include <oh/repository.hpp>
 
 #include <ostream>
@@ -222,7 +224,7 @@ namespace QuantLibAddin {
             bool permanent)
     : Bond(properties, des, cur, permanent)
     {
-		vector<QuantLib::InterestRate> couponRate(coupons.size());
+		vector<QuantLib::Rate> couponRate(coupons.size());
 
 		for (Size i=0; i<coupons.size(); ++i)
 			couponRate[i] = *coupons[i];
@@ -231,8 +233,8 @@ namespace QuantLibAddin {
             QuantLib::FixedRateBond(settlementDays, faceAmount,
                                     *schedule,
                                     couponRate,
-                                    paymentConvention,
-									redemption,
+				    QuantLib::DayCounter(),
+                                    paymentConvention, redemption,
                                     issueDate,
                                     paymentCalendar));
         libraryObject_ = qlBondObject_;

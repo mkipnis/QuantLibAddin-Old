@@ -58,7 +58,7 @@ class CppAddin(addin.Addin):
     def generateFunctions(self):
         """Generate source code for all functions in all categories."""
         self.bufferAll_.set({ 'path' : self.relativePath_ })
-        loopIncludes = '''\
+        loopIncludes = '' #'''\
 #include <%s/loop/loop_%s.hpp>
 #include <''' + self.relativePath_ + '''/loop.hpp>\n'''
         for cat in self.categoryList_.categories(self.name_,

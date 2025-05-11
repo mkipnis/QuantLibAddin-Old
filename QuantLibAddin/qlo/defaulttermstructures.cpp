@@ -90,7 +90,7 @@ namespace QuantLibAddin {
 
 
     namespace {
-        class HRObjectiveF : public std::unary_function<QuantLib::Real, QuantLib::Real> {
+        class HRObjectiveF {
             const QuantLib::Real targetValue_;
             const std::vector<QuantLib::Date> d_;
             const QuantLib::DayCounter dc_;

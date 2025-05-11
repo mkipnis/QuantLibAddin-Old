@@ -51,8 +51,7 @@ namespace QuantLibAddin {
                                                                   calendar,
                                                                   rateHelpers,
                                                                   dayCounter,
-                                                                  jumps, jumpDates,
-                                                                  accuracy));
+                                                                  jumps, jumpDates));
     }
 
     boost::shared_ptr<QuantLib::HistoricalForwardRatesAnalysis> DISCOUNT_BACKWARDFLAT_HistoricalForwardRatesAnalysis(
@@ -98,8 +97,7 @@ namespace QuantLibAddin {
                                                                  calendar,
                                                                  rateHelpers,
                                                                  dayCounter,
-                                                                 jumps, jumpDates,
-                                                                 accuracy));
+                                                                 jumps, jumpDates));
     }
 
     boost::shared_ptr<QuantLib::HistoricalForwardRatesAnalysis> DISCOUNT_FORWARDFLAT_HistoricalForwardRatesAnalysis(
@@ -145,8 +143,7 @@ namespace QuantLibAddin {
                                                             calendar,
                                                             rateHelpers,
                                                             dayCounter,
-                                                            jumps, jumpDates,
-                                                            accuracy));
+                                                            jumps, jumpDates));
     }
 
     boost::shared_ptr<QuantLib::HistoricalForwardRatesAnalysis> DISCOUNT_LINEAR_HistoricalForwardRatesAnalysis(
@@ -192,8 +189,7 @@ namespace QuantLibAddin {
                                                                calendar,
                                                                rateHelpers,
                                                                dayCounter,
-                                                               jumps, jumpDates,
-                                                               accuracy));
+                                                               jumps, jumpDates));
     }
 
     boost::shared_ptr<QuantLib::HistoricalForwardRatesAnalysis> DISCOUNT_LOGLINEAR_HistoricalForwardRatesAnalysis(
@@ -240,7 +236,6 @@ namespace QuantLibAddin {
                                                            rateHelpers,
                                                            dayCounter,
                                                            jumps, jumpDates,
-                                                           accuracy,
                                                            QuantLib::Cubic(QuantLib::CubicInterpolation::Spline, false,
                                                                            QuantLib::CubicInterpolation::SecondDerivative, 0.0,
                                                                            QuantLib::CubicInterpolation::SecondDerivative, 0.0)));
@@ -261,7 +256,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogCubic(QuantLib::CubicInterpolation::Spline, false,
                                                                                  QuantLib::CubicInterpolation::SecondDerivative, 0.0,
                                                                                  QuantLib::CubicInterpolation::SecondDerivative, 0.0)));
@@ -282,7 +276,6 @@ namespace QuantLibAddin {
                                                            rateHelpers,
                                                            dayCounter,
                                                            jumps, jumpDates,
-                                                           accuracy,
                                                            QuantLib::Cubic(QuantLib::CubicInterpolation::Spline, true,
                                                                            QuantLib::CubicInterpolation::SecondDerivative, 0.0,
                                                                            QuantLib::CubicInterpolation::SecondDerivative, 0.0)));
@@ -303,7 +296,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogCubic(QuantLib::CubicInterpolation::Spline, true,
                                                                                  QuantLib::CubicInterpolation::SecondDerivative, 0.0,
                                                                                  QuantLib::CubicInterpolation::SecondDerivative, 0.0)));
@@ -324,7 +316,6 @@ namespace QuantLibAddin {
                                                            rateHelpers,
                                                            dayCounter,
                                                            jumps, jumpDates,
-                                                           accuracy,
                                                            QuantLib::Cubic(QuantLib::CubicInterpolation::Kruger)));
     }
 
@@ -343,7 +334,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogCubic(QuantLib::CubicInterpolation::Kruger)));
     }
 
@@ -362,7 +352,6 @@ namespace QuantLibAddin {
                                                            rateHelpers,
                                                            dayCounter,
                                                            jumps, jumpDates,
-                                                           accuracy,
                                                            QuantLib::Cubic(QuantLib::CubicInterpolation::FritschButland)));
     }
 
@@ -381,7 +370,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogCubic(QuantLib::CubicInterpolation::FritschButland)));
     }
 
@@ -400,7 +388,6 @@ namespace QuantLibAddin {
                                                            rateHelpers,
                                                            dayCounter,
                                                            jumps, jumpDates,
-                                                           accuracy,
                                                            QuantLib::Cubic(QuantLib::CubicInterpolation::Parabolic, false)));
     }
 
@@ -419,7 +406,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogCubic(QuantLib::CubicInterpolation::Parabolic, false)));
     }
 
@@ -438,7 +424,6 @@ namespace QuantLibAddin {
                                                            rateHelpers,
                                                            dayCounter,
                                                            jumps, jumpDates,
-                                                           accuracy,
                                                            QuantLib::Cubic(QuantLib::CubicInterpolation::Parabolic, true)));
     }
 
@@ -457,7 +442,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogCubic(QuantLib::CubicInterpolation::Parabolic, true)));
     }
 
@@ -478,7 +462,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::MixedLinearCubic(
                                                                         n, behavior,
                                                                         QuantLib::CubicInterpolation::Spline, false,
@@ -503,7 +486,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogMixedLinearCubic(
                                                                         n, behavior,
                                                                         QuantLib::CubicInterpolation::Spline, false,
@@ -528,7 +510,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::MixedLinearCubic(
                                                                         n, behavior,
                                                                         QuantLib::CubicInterpolation::Spline, true,
@@ -553,7 +534,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogMixedLinearCubic(
                                                                         n, behavior,
                                                                         QuantLib::CubicInterpolation::Spline, true,
@@ -578,7 +558,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::MixedLinearCubic(
                                                                         n, behavior,
                                                                         QuantLib::CubicInterpolation::Kruger, false,
@@ -603,7 +582,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogMixedLinearCubic(
                                                                         n, behavior,
                                                                         QuantLib::CubicInterpolation::Kruger, false,
@@ -626,8 +604,7 @@ namespace QuantLibAddin {
                                                                   calendar,
                                                                   rateHelpers,
                                                                   dayCounter,
-                                                                  jumps, jumpDates,
-                                                                  accuracy));
+                                                                  jumps, jumpDates));
     }
 
         boost::shared_ptr<QuantLib::HistoricalForwardRatesAnalysis> ZEROYIELD_BACKWARDFLAT_HistoricalForwardRatesAnalysis(
@@ -673,8 +650,7 @@ namespace QuantLibAddin {
                                                                  calendar,
                                                                  rateHelpers,
                                                                  dayCounter,
-                                                                 jumps, jumpDates,
-                                                                 accuracy));
+                                                                 jumps, jumpDates));
     }
 
         boost::shared_ptr<QuantLib::HistoricalForwardRatesAnalysis> ZEROYIELD_FORWARDFLAT_HistoricalForwardRatesAnalysis(
@@ -720,8 +696,8 @@ namespace QuantLibAddin {
                                                             calendar,
                                                             rateHelpers,
                                                             dayCounter,
-                                                            jumps, jumpDates,
-                                                            accuracy));
+                                                            jumps, jumpDates
+                                                            ));
     }
 
    boost::shared_ptr<QuantLib::HistoricalForwardRatesAnalysis> ZEROYIELD_LINEAR_HistoricalForwardRatesAnalysis(
@@ -767,8 +743,7 @@ namespace QuantLibAddin {
                                                                calendar,
                                                                rateHelpers,
                                                                dayCounter,
-                                                               jumps, jumpDates,
-                                                               accuracy));
+                                                               jumps, jumpDates));
     }
 
    boost::shared_ptr<QuantLib::HistoricalForwardRatesAnalysis> ZEROYIELD_LOGLINEAR_HistoricalForwardRatesAnalysis(
@@ -815,7 +790,6 @@ namespace QuantLibAddin {
                                                            rateHelpers,
                                                            dayCounter,
                                                            jumps, jumpDates,
-                                                           accuracy,
                                                            QuantLib::Cubic(QuantLib::CubicInterpolation::Spline, false,
                                                                            QuantLib::CubicInterpolation::SecondDerivative, 0.0,
                                                                            QuantLib::CubicInterpolation::SecondDerivative, 0.0)));
@@ -836,7 +810,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogCubic(QuantLib::CubicInterpolation::Spline, false,
                                                                                  QuantLib::CubicInterpolation::SecondDerivative, 0.0,
                                                                                  QuantLib::CubicInterpolation::SecondDerivative, 0.0)));
@@ -857,7 +830,6 @@ namespace QuantLibAddin {
                                                                  rateHelpers,
                                                                  dayCounter,
                                                                  jumps, jumpDates,
-                                                                 accuracy,
                                                                  QuantLib::Cubic(QuantLib::CubicInterpolation::Spline, true,
                                                                                  QuantLib::CubicInterpolation::SecondDerivative, 0.0,
                                                                                  QuantLib::CubicInterpolation::SecondDerivative, 0.0)));
@@ -878,7 +850,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogCubic(QuantLib::CubicInterpolation::Spline, true,
                                                                                  QuantLib::CubicInterpolation::SecondDerivative, 0.0,
                                                                                  QuantLib::CubicInterpolation::SecondDerivative, 0.0)));
@@ -899,7 +870,6 @@ namespace QuantLibAddin {
                                                            rateHelpers,
                                                            dayCounter,
                                                            jumps, jumpDates,
-                                                           accuracy,
                                                            QuantLib::Cubic(QuantLib::CubicInterpolation::Kruger)));
     }
 
@@ -918,7 +888,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogCubic(QuantLib::CubicInterpolation::Kruger)));
     }
 
@@ -937,7 +906,6 @@ namespace QuantLibAddin {
                                                            rateHelpers,
                                                            dayCounter,
                                                            jumps, jumpDates,
-                                                           accuracy,
                                                            QuantLib::Cubic(QuantLib::CubicInterpolation::FritschButland)));
     }
 
@@ -956,7 +924,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogCubic(QuantLib::CubicInterpolation::FritschButland)));
     }
 
@@ -975,7 +942,6 @@ namespace QuantLibAddin {
                                                            rateHelpers,
                                                            dayCounter,
                                                            jumps, jumpDates,
-                                                           accuracy,
                                                            QuantLib::Cubic(QuantLib::CubicInterpolation::Parabolic, false)));
     }
 
@@ -994,7 +960,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogCubic(QuantLib::CubicInterpolation::Parabolic, false)));
     }
 
@@ -1013,7 +978,6 @@ namespace QuantLibAddin {
                                                            rateHelpers,
                                                            dayCounter,
                                                            jumps, jumpDates,
-                                                           accuracy,
                                                            QuantLib::Cubic(QuantLib::CubicInterpolation::Parabolic, true)));
     }
 
@@ -1032,7 +996,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogCubic(QuantLib::CubicInterpolation::Parabolic, true)));
     }
 
@@ -1053,7 +1016,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::MixedLinearCubic(
                                                                         n, behavior,
                                                                         QuantLib::CubicInterpolation::Spline, false,
@@ -1078,7 +1040,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogMixedLinearCubic(
                                                                         n, behavior,
                                                                         QuantLib::CubicInterpolation::Spline, false,
@@ -1103,7 +1064,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::MixedLinearCubic(
                                                                         n, behavior,
                                                                         QuantLib::CubicInterpolation::Spline, true,
@@ -1128,7 +1088,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogMixedLinearCubic(
                                                                         n, behavior,
                                                                         QuantLib::CubicInterpolation::Spline, true,
@@ -1153,7 +1112,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::MixedLinearCubic(
                                                                         n, behavior,
                                                                         QuantLib::CubicInterpolation::Kruger, false,
@@ -1178,7 +1136,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogMixedLinearCubic(
                                                                         n, behavior,
                                                                         QuantLib::CubicInterpolation::Kruger, false,
@@ -1200,8 +1157,7 @@ namespace QuantLibAddin {
                                                                   calendar,
                                                                   rateHelpers,
                                                                   dayCounter,
-                                                                  jumps, jumpDates,
-                                                                  accuracy));
+                                                                  jumps, jumpDates));
     }
 
        boost::shared_ptr<QuantLib::HistoricalForwardRatesAnalysis> FORWARDRATE_BACKWARDFLAT_HistoricalForwardRatesAnalysis(
@@ -1247,8 +1203,7 @@ namespace QuantLibAddin {
                                                                  calendar,
                                                                  rateHelpers,
                                                                  dayCounter,
-                                                                 jumps, jumpDates,
-                                                                 accuracy));
+                                                                 jumps, jumpDates));
     }
 
        boost::shared_ptr<QuantLib::HistoricalForwardRatesAnalysis> FORWARDRATE_FORWARDFLAT_HistoricalForwardRatesAnalysis(
@@ -1294,8 +1249,7 @@ namespace QuantLibAddin {
                                                             calendar,
                                                             rateHelpers,
                                                             dayCounter,
-                                                            jumps, jumpDates,
-                                                            accuracy));
+                                                            jumps, jumpDates));
     }
 
        boost::shared_ptr<QuantLib::HistoricalForwardRatesAnalysis> FORWARDRATE_LINEAR_HistoricalForwardRatesAnalysis(
@@ -1341,8 +1295,7 @@ namespace QuantLibAddin {
                                                                calendar,
                                                                rateHelpers,
                                                                dayCounter,
-                                                               jumps, jumpDates,
-                                                               accuracy));
+                                                               jumps, jumpDates));
     }
 
        boost::shared_ptr<QuantLib::HistoricalForwardRatesAnalysis> FORWARDRATE_LOGLINEAR_HistoricalForwardRatesAnalysis(
@@ -1389,7 +1342,6 @@ namespace QuantLibAddin {
                                                            rateHelpers,
                                                            dayCounter,
                                                            jumps, jumpDates,
-                                                           accuracy,
                                                            QuantLib::Cubic(QuantLib::CubicInterpolation::Spline, false,
                                                                            QuantLib::CubicInterpolation::SecondDerivative, 0.0,
                                                                            QuantLib::CubicInterpolation::SecondDerivative, 0.0)));
@@ -1410,7 +1362,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogCubic(QuantLib::CubicInterpolation::Spline, false,
                                                                                  QuantLib::CubicInterpolation::SecondDerivative, 0.0,
                                                                                  QuantLib::CubicInterpolation::SecondDerivative, 0.0)));
@@ -1431,7 +1382,6 @@ namespace QuantLibAddin {
                                                            rateHelpers,
                                                            dayCounter,
                                                            jumps, jumpDates,
-                                                           accuracy,
                                                            QuantLib::Cubic(QuantLib::CubicInterpolation::Spline, true,
                                                                            QuantLib::CubicInterpolation::SecondDerivative, 0.0,
                                                                            QuantLib::CubicInterpolation::SecondDerivative, 0.0)));
@@ -1452,7 +1402,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogCubic(QuantLib::CubicInterpolation::Spline, true,
                                                                                  QuantLib::CubicInterpolation::SecondDerivative, 0.0,
                                                                                  QuantLib::CubicInterpolation::SecondDerivative, 0.0)));
@@ -1473,7 +1422,6 @@ namespace QuantLibAddin {
                                                            rateHelpers,
                                                            dayCounter,
                                                            jumps, jumpDates,
-                                                           accuracy,
                                                            QuantLib::Cubic(QuantLib::CubicInterpolation::Kruger)));
     }
 
@@ -1492,7 +1440,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogCubic(QuantLib::CubicInterpolation::Kruger)));
     }
 
@@ -1511,7 +1458,6 @@ namespace QuantLibAddin {
                                                            rateHelpers,
                                                            dayCounter,
                                                            jumps, jumpDates,
-                                                           accuracy,
                                                            QuantLib::Cubic(QuantLib::CubicInterpolation::FritschButland)));
     }
 
@@ -1530,7 +1476,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogCubic(QuantLib::CubicInterpolation::FritschButland)));
     }
 
@@ -1549,7 +1494,6 @@ namespace QuantLibAddin {
                                                            rateHelpers,
                                                            dayCounter,
                                                            jumps, jumpDates,
-                                                           accuracy,
                                                            QuantLib::Cubic(QuantLib::CubicInterpolation::Parabolic, false)));
     }
 
@@ -1568,7 +1512,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogCubic(QuantLib::CubicInterpolation::Parabolic, false)));
     }
 
@@ -1587,7 +1530,6 @@ namespace QuantLibAddin {
                                                            rateHelpers,
                                                            dayCounter,
                                                            jumps, jumpDates,
-                                                           accuracy,
                                                            QuantLib::Cubic(QuantLib::CubicInterpolation::Parabolic, true)));
     }
 
@@ -1606,7 +1548,6 @@ namespace QuantLibAddin {
                                                               rateHelpers,
                                                               dayCounter,
                                                               jumps, jumpDates,
-                                                              accuracy,
                                                               QuantLib::LogCubic(QuantLib::CubicInterpolation::Parabolic, true)));
     }
 

@@ -301,21 +301,6 @@
           <libraryClass>QuantLib::CoxRossRubinstein</libraryClass>
         </EnumeratedClass>
         <EnumeratedClass>
-          <string>FDA</string>
-          <value>FDA_Engine</value>
-          <libraryClass>QuantLib::FDAmericanEngine</libraryClass>
-        </EnumeratedClass>
-        <EnumeratedClass>
-          <string>FDB</string>
-          <value>FDB_Engine</value>
-          <libraryClass>QuantLib::FDBermudanEngine</libraryClass>
-        </EnumeratedClass>
-        <EnumeratedClass>
-          <string>FDE</string>
-          <value>FDE_Engine</value>
-          <libraryClass>QuantLib::FDEuropeanEngine</libraryClass>
-        </EnumeratedClass>
-        <EnumeratedClass>
           <string>JOSHI</string>
           <value>JOSHI_Engine</value>
           <libraryClass>QuantLib::Joshi4</libraryClass>

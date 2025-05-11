@@ -9,6 +9,7 @@ AC_CONFIG_SRCDIR([oh/objecthandler.hpp])
 AC_CONFIG_AUX_DIR([config])
 AC_CONFIG_HEADERS([oh/config.hpp])
 AM_INIT_AUTOMAKE([foreign])
+AC_ARG_VAR([LDFLAGS])
 
 AC_COPYRIGHT([
 Copyright (C) 2004, 2005, 2006, 2007 Eric Ehlers

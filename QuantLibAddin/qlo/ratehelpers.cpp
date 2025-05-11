@@ -290,7 +290,7 @@ namespace QuantLibAddin {
             bool permanent)
     : RateHelper(properties, permanent) {
         libraryObject_ = shared_ptr<QuantLib::BondHelper>(new
-            QuantLib::BondHelper(price, bond, useCleanPrice));
+            QuantLib::BondHelper(price, bond));
         quoteName_ = f(properties->getSystemProperty("Price"));
     }
 
@@ -330,8 +330,7 @@ namespace QuantLibAddin {
                                           exCouponPeriod,
                                           exCouponCalendar,
                                           exCouponConvention,
-                                          exCouponEndOfMonth,
-                                          useCleanPrice));
+                                          exCouponEndOfMonth));
         quoteName_ = f(properties->getSystemProperty("Price"));
     }
 
