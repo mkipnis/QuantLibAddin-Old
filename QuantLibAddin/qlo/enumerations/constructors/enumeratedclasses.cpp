@@ -121,7 +121,7 @@ namespace QuantLibAddin {
     boost::shared_ptr<QuantLib::PricingEngine> ADE_Engine(
         const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process) {
         return boost::shared_ptr<QuantLib::PricingEngine> (
-            new QuantLib::AnalyticDividendEuropeanEngine(process));
+            new QuantLib::AnalyticDividendEuropeanEngine(process, QuantLib::DividendSchedule()));
     }
     boost::shared_ptr<QuantLib::PricingEngine> ADGAPA_Engine(
         const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process) {
@@ -211,6 +211,7 @@ namespace QuantLibAddin {
         return boost::shared_ptr<QuantLib::PricingEngine> (
             new QuantLib::BinomialVanillaEngine<QuantLib::CoxRossRubinstein>(process, timeSteps));
     }
+    /*
     boost::shared_ptr<QuantLib::PricingEngine> FDA_Engine(
         const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process, const long& timeSteps) {
         return boost::shared_ptr<QuantLib::PricingEngine> (
@@ -225,7 +226,7 @@ namespace QuantLibAddin {
         const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process, const long& timeSteps) {
         return boost::shared_ptr<QuantLib::PricingEngine> (
             new QuantLib::FDEuropeanEngine<>(process, timeSteps, timeSteps-1));
-    }
+    }*/
     boost::shared_ptr<QuantLib::PricingEngine> JOSHI_Engine(
         const boost::shared_ptr<QuantLib::GeneralizedBlackScholesProcess>& process, const long& timeSteps) {
         return boost::shared_ptr<QuantLib::PricingEngine> (

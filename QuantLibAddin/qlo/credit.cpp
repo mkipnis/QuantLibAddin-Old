@@ -34,7 +34,6 @@
 #include <ql/math/interpolations/loginterpolation.hpp>
 #include <ql/pricingengines/credit/midpointcdsengine.hpp>
 
-#include <ql/experimental/credit/riskybond.hpp>
 #include <ql/experimental/credit/syntheticcdo.hpp>
 #include <ql/experimental/credit/midpointcdoengine.hpp>
 #include <ql/experimental/credit/nthtodefault.hpp>
@@ -345,11 +344,11 @@ namespace QuantLibAddin {
 
         std::vector<QuantLib::Real> notionals(1,notional);
 
-        libraryObject_ = boost::shared_ptr<QuantLib::RiskyFixedBond>(
+        /* libraryObject_ = boost::shared_ptr<QuantLib::RiskyFixedBond>(
             new QuantLib::RiskyFixedBond(
                     name,ccy,recoveryRate,defaultTS,*schedule,rate,dayCounter,
                     paymentConvention,notionals,yieldTS///, npvDate
-                                       ));
+                                       )); */
 
     }
 

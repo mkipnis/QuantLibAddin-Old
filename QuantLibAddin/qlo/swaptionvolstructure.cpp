@@ -27,8 +27,6 @@
 #include <qlo/swaptionvolstructure.hpp>
 
 #include <ql/termstructures/volatility/swaption/swaptionconstantvol.hpp>
-#include <ql/termstructures/volatility/swaption/swaptionvolcube2.hpp>
-#include <ql/termstructures/volatility/swaption/swaptionvolcube1.hpp>
 #include <ql/termstructures/volatility/swaption/swaptionvolmatrix.hpp>
 #include <ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp>
 #include <ql/math/optimization/endcriteria.hpp>
@@ -110,7 +108,7 @@ namespace QuantLibAddin {
         bool vegaWeightedSmileFit,
         bool permanent) : SwaptionVolatilityCube(properties, permanent)
     {
-        libraryObject_ = boost::shared_ptr<QuantLib::Extrapolator>(new
+        /*libraryObject_ = boost::shared_ptr<QuantLib::Extrapolator>(new
             QuantLib::SwaptionVolCube2(atmVol,
                                        optionTenors,
                                        swapTenors,
@@ -118,7 +116,7 @@ namespace QuantLibAddin {
                                        volSpreads,
                                        swapIndexBase,
                                        shortSwapIndexBase,
-                                       vegaWeightedSmileFit));
+                                       vegaWeightedSmileFit));*/
     }
 
     SwaptionVolCube1::SwaptionVolCube1(
@@ -140,7 +138,7 @@ namespace QuantLibAddin {
         bool permanent) : SwaptionVolatilityCube(properties, permanent)
     {
         QL_REQUIRE(!atmVol.empty(), "atm vol handle not linked to anything");
-        libraryObject_ = boost::shared_ptr<QuantLib::Extrapolator>(new
+        /* libraryObject_ = boost::shared_ptr<QuantLib::Extrapolator>(new
             QuantLib::SwaptionVolCube1(atmVol,
                                        optionTenors,
                                        swapTenors,
@@ -154,40 +152,40 @@ namespace QuantLibAddin {
                                        isAtmCalibrated,
                                        endCriteria,
                                        maxErrorTolerance,
-                                       optMethod ));
+                                       optMethod )); */
     }
 
-    std::vector<std::vector<ObjectHandler::property_t> >
+    /* std::vector<std::vector<ObjectHandler::property_t> >
     SwaptionVolCube1::getSparseSabrParameters() {
         const boost::shared_ptr<QuantLib::SwaptionVolCube1>&
             volCube = boost::dynamic_pointer_cast<
                     QuantLib::SwaptionVolCube1>(libraryObject_);
         return getSabrParameters(volCube->sparseSabrParameters());
-    }
+    } */
 
-    std::vector<std::vector<ObjectHandler::property_t> >
+    /* std::vector<std::vector<ObjectHandler::property_t> >
     SwaptionVolCube1::getDenseSabrParameters() {
         const boost::shared_ptr<QuantLib::SwaptionVolCube1>&
             volCube = boost::dynamic_pointer_cast<
                     QuantLib::SwaptionVolCube1>(libraryObject_);
-        return getSabrParameters(volCube->denseSabrParameters());
-    }
+        return getSabrParameters(volCube->denseSabrParameters()); 
+    } */
 
-    std::vector<std::vector<ObjectHandler::property_t> >
+    /* std::vector<std::vector<ObjectHandler::property_t> >
     SwaptionVolCube1::getMarketVolCube() {
         const boost::shared_ptr<QuantLib::SwaptionVolCube1>&
             volCube = boost::dynamic_pointer_cast<
                     QuantLib::SwaptionVolCube1>(libraryObject_);
         return getVolCube(volCube->marketVolCube());
-    }
+    } */
 
-    std::vector<std::vector<ObjectHandler::property_t> >
+   /* std::vector<std::vector<ObjectHandler::property_t> >
     SwaptionVolCube1::getVolCubeAtmCalibrated() {
         const boost::shared_ptr<QuantLib::SwaptionVolCube1>&
             volCube = boost::dynamic_pointer_cast<
                     QuantLib::SwaptionVolCube1>(libraryObject_);
         return getVolCube(volCube->volCubeAtmCalibrated());
-    }
+    } */
 
     std::vector<std::vector<ObjectHandler::property_t> > getSabrParameters(QuantLib::Matrix sabrParameters)
     {
@@ -263,7 +261,7 @@ namespace QuantLibAddin {
             const QuantLib::Period& optionTenor,
             const QuantLib::Period& swapTenors,
             bool permanent) : SmileSection(properties, permanent) {
-             libraryObject_ = cube->smileSection(optionTenor,swapTenors);
+             // libraryObject_ = cube->smileSection(optionTenor,swapTenors);
     }
 
     SmileSectionByCube::SmileSectionByCube(
@@ -272,7 +270,7 @@ namespace QuantLibAddin {
             const QuantLib::Date& optionDate,
             const QuantLib::Period& swapTenors,
             bool permanent) : SmileSection(properties, permanent) {
-             libraryObject_ = cube->smileSection(optionDate,swapTenors);
+             // libraryObject_ = cube->smileSection(optionDate,swapTenors);
     }
 
 }

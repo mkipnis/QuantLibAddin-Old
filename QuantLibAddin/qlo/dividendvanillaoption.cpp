@@ -34,11 +34,13 @@ namespace QuantLibAddin {
             const std::vector<QuantLib::Real>& dividends,
             bool permanent) : OneAssetOption(properties, permanent)
     {
+	/*
         libraryObject_ = boost::shared_ptr<QuantLib::Instrument>(new
             QuantLib::DividendVanillaOption(payoff,
                                             exercise,
                                             dividendDates,
                                             dividends));
+	*/
     }
 
 }
