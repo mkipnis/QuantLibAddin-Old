@@ -5,7 +5,13 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-message(STATUS "QuantLib Addin Install Dir: ${QLA_INSTALL_PREFIX}")
+if(QLA_INSTALL_PREFIX)
+    set(CMAKE_INSTALL_PREFIX ${QLA_INSTALL_DIR} CACHE PATH "Install path" FORCE)
+else()
+    set(QLA_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX} CACHE PATH "Install path" FORCE)
+endif()
+
+message(STATUS "QuantLib Addin Install Prefix: ${QLA_INSTALL_PREFIX}")
 
 include(ExternalProject)
 
