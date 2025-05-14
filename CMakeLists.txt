@@ -84,3 +84,5 @@ ExternalProject_Add(QuantLibAddin
     INSTALL_COMMAND make install
     BUILD_IN_SOURCE 1
 )
+
+install(CODE "message(STATUS \"Skipping install - no-op\")")
