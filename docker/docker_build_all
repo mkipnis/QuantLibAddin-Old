@@ -1,0 +1,11 @@
+FROM ubuntu:latest
+
+RUN apt-get update && apt-get install -y \
+    git \
+    build-essential \
+    cmake \
+    libboost-all-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+ADD qladdin_old_build.sh .
+RUN ./qladdin_old_build.sh

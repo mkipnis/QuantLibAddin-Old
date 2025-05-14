@@ -15,4 +15,4 @@ cd build
 
 cmake .. -DQLA_INSTALL_PREFIX=${INSTALL_DIR}
 
-cmake --build .
+cmake --build . --target install
