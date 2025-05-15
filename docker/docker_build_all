@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:latest as builder
 
 RUN apt-get update && apt-get install -y \
     git \
@@ -9,3 +9,11 @@ RUN apt-get update && apt-get install -y \
 
 ADD qladdin_old_build.sh .
 RUN ./qladdin_old_build.sh
+
+
+FROM ubuntu:latest
+RUN apt-get update && apt-get install -y \
+    libboost-all-dev \
+ && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+COPY --from=builder /usr/local /usr/local
