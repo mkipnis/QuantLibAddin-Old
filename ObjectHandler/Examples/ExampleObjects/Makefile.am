@@ -1,5 +1,5 @@
 
-LDFLAGS = -lboost_serialization -lboost_system -lboost_filesystem
+LDFLAGS = -lboost_serialization -lboost_filesystem
 
 noinst_LTLIBRARIES = libExampleObjects.la
 

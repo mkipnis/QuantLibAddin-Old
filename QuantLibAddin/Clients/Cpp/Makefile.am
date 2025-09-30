@@ -1,7 +1,7 @@
  
 QLADemo_CPPFLAGS = -I${top_srcdir}
 QLADemo_LDADD = ../../qlo/libQuantLibAddin.la ../../Addins/Cpp/libQuantLibAddinCpp.la
-QLADemo_LDFLAGS = -lObjectHandler -lQuantLib -lboost_filesystem -lboost_serialization -lboost_system -lboost_regex
+QLADemo_LDFLAGS = -lObjectHandler -lQuantLib -lboost_filesystem -lboost_serialization -lboost_regex
 
 EXTRA_DIST = \
     ClientCppDemo.vcxproj
