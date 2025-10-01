@@ -90,7 +90,7 @@ RL_LIB=  \
 #       $(QA_PATH)/qlo/.libs/libQuantLibAddin.a \
 #       $(OH_PATH)/oh/.libs/libObjectHandler.a \
 #       $(QL_PATH)/ql/.libs/libQuantLib.a \
-        -lboost_regex -lboost_serialization -lboost_filesystem -lboost_system
+        -lboost_regex -lboost_serialization -lboost_filesystem
 
 
 WIN_LIB= $(QA_PATH)/lib/QuantLibObjects-vc100-mt-1_2_0.lib \

@@ -1,7 +1,7 @@
  
 instrument_in_CPPFLAGS = -I${top_srcdir}
 instrument_in_LDADD = ../../qlo/libQuantLibAddin.la ../../Addins/Cpp/libQuantLibAddinCpp.la
-instrument_in_LDFLAGS = -lObjectHandler -lQuantLib -lboost_filesystem -lboost_serialization -lboost_system -lboost_regex
+instrument_in_LDFLAGS = -lObjectHandler -lQuantLib -lboost_filesystem -lboost_serialization -lboost_regex
 
 EXTRA_DIST = \
     CppInstrumentIn.vcxproj \
