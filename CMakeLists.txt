@@ -60,7 +60,7 @@ ExternalProject_Add(ObjectHandler
 # Build QuantLib using its CMake configuration
 ExternalProject_Add(QuantLib
     GIT_REPOSITORY https://github.com/lballabio/QuantLib.git
-    GIT_TAG master
+    GIT_TAG v1.39
     CMAKE_ARGS
         -DCMAKE_INSTALL_PREFIX=${QLA_INSTALL_PREFIX}
         -DCMAKE_BUILD_TYPE=Release
