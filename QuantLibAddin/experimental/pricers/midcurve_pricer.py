@@ -44,8 +44,9 @@ def price_mid_curves(index, forecast_curve, swap_tenors, forward_start_tenors):
 
     for curve_tenor in swap_tenors:
         ois_midcurves = {}
+
         for forward_start in forward_start_tenors:
-            ois = ql.MakeOIS(ql.Period(curve_tenor), index_obj,
+            ois = ql.MakeOIS(ql.Period(curve_tenor), index_obj, fixedRate=0.0001,
                              fwdStart=ql.Period(forward_start)
                              )
             ois.setPricingEngine(ql.DiscountingSwapEngine(forecast_curve))

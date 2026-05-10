@@ -19,21 +19,21 @@ add_executable(options options.cpp)
 
 target_link_libraries(options PRIVATE pybind11::embed)
 
-# ---- Copy scripts/ directory to build dir ----
+# ---- Copy qlo/ directory to build dir ----
 add_custom_command(TARGET options POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-            ${CMAKE_SOURCE_DIR}/scripts
-            $<TARGET_FILE_DIR:options>/scripts
+            ${CMAKE_SOURCE_DIR}/qlo
+            $<TARGET_FILE_DIR:options>/qlo
 )
 
-message(STATUS "Scripts will be copied to: $<TARGET_FILE_DIR:options>/scripts")
+message(STATUS "Scripts will be copied to: $<TARGET_FILE_DIR:options>/qlo")
 
 
 
 add_executable(proxy_pricer proxy_pricer.cpp)
 target_link_libraries(proxy_pricer PRIVATE pybind11::embed)
 
-# ---- Copy scripts/ directory to build dir ----
+# ---- Copy pricers/ directory to build dir ----
 add_custom_command(TARGET proxy_pricer POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
             ${CMAKE_SOURCE_DIR}/pricers

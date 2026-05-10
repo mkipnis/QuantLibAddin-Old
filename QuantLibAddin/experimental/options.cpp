@@ -25,17 +25,17 @@ int main() {
 		py::module_ ql = py::module_::import("QuantLib");
 
 		// Import QLO Scripts
-		sys.attr("path").attr("append")("scripts");
+		sys.attr("path").attr("append")("qlo");
 		
 		py::print("sys.path =", sys.attr("path"));
 
 
 		// Import QLO like modules, files from qlo/*
-		py::module_ qlo_date = py::module_::import("scripts.date");
-		py::module_ qlo_quotes = py::module_::import("scripts.quotes");
-		py::module_ qlo_volatilities = py::module_::import("scripts.volatilities");
-		py::module_ qlo_yieldtermstructures = py::module_::import("scripts.yieldtermstructures");
-		py::module_ qlo_processes = py::module_::import("scripts.processes");
+		py::module_ qlo_date = py::module_::import("qlo.date");
+		py::module_ qlo_quotes = py::module_::import("qlo.quotes");
+		py::module_ qlo_volatilities = py::module_::import("qlo.volatilities");
+		py::module_ qlo_yieldtermstructures = py::module_::import("qlo.yieldtermstructures");
+		py::module_ qlo_processes = py::module_::import("qlo.processes");
 
 		// QLO functions
 		py::object QLO_DateHandle = qlo_date.attr("Date");
