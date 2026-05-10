@@ -1,0 +1,15 @@
+{
+    "Name": "OIS-SOFR",
+    "Index": "Sofr",
+    "CurveComponents": [
+      {"Type": "Swap", "Tenor": "1Y", "Quote": 0.0425, "SettlementDays": 2},
+      {"Type": "Swap", "Tenor": "3Y", "Quote": 0.0445, "SettlementDays": 2},
+      {"Type": "Swap", "Tenor": "5Y", "Quote": 0.0423, "SettlementDays": 2},
+      {"Type": "Swap", "Tenor": "10Y", "Quote": 0.0516, "SettlementDays": 2},
+      {"Type": "Swap", "Tenor": "15Y", "Quote": 0.06175, "SettlementDays": 2},
+      {"Type": "Swap", "Tenor": "20Y", "Quote": 0.05185, "SettlementDays": 2},
+      {"Type": "Swap", "Tenor": "30Y", "Quote": 0.062195, "SettlementDays": 2}
+    ],
+    "swap_tenor": ["2Y", "5Y", "7Y", "10Y", "15Y", "30Y"],
+    "forward_tenor" : ["1Y", "2Y", "3Y", "5Y", "10Y", "20Y"]
+  }
