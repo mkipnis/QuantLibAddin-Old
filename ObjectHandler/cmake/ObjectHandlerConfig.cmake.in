@@ -1,0 +1,14 @@
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+
+find_dependency(
+	Boost REQUIRED
+	COMPONENTS
+		serialization
+		filesystem
+)
+
+include("${CMAKE_CURRENT_LIST_DIR}/ObjectHandlerTargets.cmake")
+
+check_required_components(ObjectHandler)

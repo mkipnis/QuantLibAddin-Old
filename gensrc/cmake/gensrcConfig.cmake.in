@@ -1,0 +1,27 @@
+@PACKAGE_INIT@
+
+set(gensrc_ROOT
+	"${PACKAGE_PREFIX_DIR}/share/gensrc"
+)
+
+set(gensrc_SCRIPT
+	"${gensrc_ROOT}/gensrc.py"
+)
+
+set(gensrc_CODE_DIR
+	"${gensrc_ROOT}/code"
+)
+
+set(gensrc_METADATA_DIR
+	"${gensrc_ROOT}/metadata"
+)
+
+set(gensrc_STUBS_DIR
+	"${gensrc_ROOT}/stubs"
+)
+
+set(gensrc_CONFIG_DIR
+	"${gensrc_ROOT}/config"
+)
+
+check_required_components(gensrc)
