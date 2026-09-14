@@ -1,6 +1,8 @@
 
 <root>
 
+  <coreCategoryNames/> 
+
   <addinCategoryNames>
     <categoryName>abcd</categoryName>
     <categoryName>accountingengines</categoryName>
