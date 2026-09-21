@@ -1,0 +1,11 @@
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+
+find_dependency(QuantLib REQUIRED)
+find_dependency(ObjectHandler REQUIRED)
+find_dependency(Boost REQUIRED COMPONENTS serialization filesystem)
+
+include("${CMAKE_CURRENT_LIST_DIR}/QuantLibAddinTargets.cmake")
+
+check_required_components(QuantLibAddin)

@@ -10,57 +10,43 @@ option(BUILD_SHARED_LIBS "Build ObjectHandler as a shared library" OFF)
 if(MSVC)
     add_compile_options(/W4 /EHsc /MP)
     set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+    set(Boost_USE_STATIC_LIBS ON)
+    set(Boost_USE_STATIC_RUNTIME ON)
 else()
     add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
 find_package(Python3 REQUIRED COMPONENTS Interpreter)
 find_package(Boost REQUIRED COMPONENTS serialization filesystem)
-find_package(gensrc REQUIRED)
 
 set(OH_GENSRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/gensrc")
 set(GENSRC_TIMESTAMP "${CMAKE_CURRENT_BINARY_DIR}/gensrc.timestamp")
 
-set(GENSRC_METADATA
-    ${OH_GENSRC_DIR}/metadata/addins/doxygen.xml
-    ${OH_GENSRC_DIR}/metadata/addins/excel.xml
-    ${OH_GENSRC_DIR}/metadata/addins/loop.xml
-    ${OH_GENSRC_DIR}/metadata/addins/valueobjects.xml
-    ${OH_GENSRC_DIR}/metadata/functions/enumerations.xml
-    ${OH_GENSRC_DIR}/metadata/functions/garbagecollection.xml
-    ${OH_GENSRC_DIR}/metadata/functions/logging.xml
-    ${OH_GENSRC_DIR}/metadata/functions/ohutils.xml
-    ${OH_GENSRC_DIR}/metadata/functions/valueobjects.xml
-    ${OH_GENSRC_DIR}/metadata/rules/doxygen.xml
-    ${OH_GENSRC_DIR}/metadata/rules/excel.xml
-    ${OH_GENSRC_DIR}/metadata/rules/loop.xml
-    ${OH_GENSRC_DIR}/metadata/rules/valueobjects.xml
-    ${OH_GENSRC_DIR}/metadata/types/types.xml
-)
-
-set(GENSRC_STUBS
-    ${OH_GENSRC_DIR}/stubs/stub.copyright
-    ${OH_GENSRC_DIR}/stubs/stub.excel.exports
-    ${OH_GENSRC_DIR}/stubs/stub.excel.includes
-)
-
-set(GENSRC_INPUTS ${GENSRC_METADATA} ${GENSRC_STUBS} ${OH_GENSRC_DIR}/code/codedict.py ${OH_GENSRC_DIR}/config/config.xml)
-set(GENSRC_PYTHONPATH "${OH_GENSRC_DIR};${gensrc_CODE_DIR}")
-
 add_custom_command(
     OUTPUT ${GENSRC_TIMESTAMP}
     COMMAND ${CMAKE_COMMAND} -E echo "Generating ObjectHandler sources"
-    COMMAND ${CMAKE_COMMAND} -E env "PYTHONPATH=${GENSRC_PYTHONPATH};$ENV{PYTHONPATH}" ${Python3_EXECUTABLE} ${gensrc_SCRIPT} -xdvl --oh_dir=${CMAKE_CURRENT_SOURCE_DIR}
+    COMMAND ${CMAKE_COMMAND} -E env
+        "PYTHONPATH=${OH_GENSRC_DIR};${gensrc_CODE_DIR};$ENV{PYTHONPATH}"
+        ${Python3_EXECUTABLE} ${gensrc_SCRIPT}
+        -xdvl
+        --oh_dir=${CMAKE_CURRENT_SOURCE_DIR}
     COMMAND ${CMAKE_COMMAND} -E touch ${GENSRC_TIMESTAMP}
-    DEPENDS ${gensrc_SCRIPT} ${GENSRC_INPUTS}
     WORKING_DIRECTORY ${OH_GENSRC_DIR}
     VERBATIM
 )
 
-add_custom_target(gensrc_generate ALL DEPENDS ${GENSRC_TIMESTAMP})
+add_custom_target(gensrc_generate ALL
+    DEPENDS ${GENSRC_TIMESTAMP}
+)
 
-file(GLOB_RECURSE OH_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/oh/*.cpp")
-file(GLOB_RECURSE OH_HEADERS CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/oh/*.hpp" "${CMAKE_CURRENT_SOURCE_DIR}/oh/*.h")
+file(GLOB_RECURSE OH_SOURCES CONFIGURE_DEPENDS
+    "${CMAKE_CURRENT_SOURCE_DIR}/oh/*.cpp"
+)
+
+file(GLOB_RECURSE OH_HEADERS CONFIGURE_DEPENDS
+    "${CMAKE_CURRENT_SOURCE_DIR}/oh/*.hpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/oh/*.h"
+)
 
 add_library(oh ${OH_SOURCES} ${OH_HEADERS})
 add_library(ObjectHandler::oh ALIAS oh)
@@ -74,20 +60,69 @@ target_include_directories(oh PUBLIC
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
-target_link_libraries(oh PUBLIC Boost::serialization Boost::filesystem)
+target_link_libraries(oh PUBLIC
+    Boost::serialization
+    Boost::filesystem
+)
 
-set_target_properties(oh PROPERTIES OUTPUT_NAME "ObjectHandler")
+if(MSVC)
+    if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+        set(OH_ARCH x64)
+    else()
+        set(OH_ARCH x86)
+    endif()
 
-install(TARGETS oh EXPORT ObjectHandlerTargets
+    if(BUILD_SHARED_LIBS)
+        set(OH_RUNTIME mt)
+    else()
+        set(OH_RUNTIME mt-s)
+    endif()
+
+    set(OH_OUTPUT_NAME "ObjectHandler-${OH_ARCH}-${OH_RUNTIME}")
+else()
+    set(OH_OUTPUT_NAME ObjectHandler)
+endif()
+
+set_target_properties(oh PROPERTIES
+    OUTPUT_NAME "${OH_OUTPUT_NAME}"
+)
+
+# ------------------------------------------------------------------------------
+# Install library
+# ------------------------------------------------------------------------------
+
+install(TARGETS oh
+    EXPORT ObjectHandlerTargets
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
-install(DIRECTORY oh/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ObjectHandler/oh FILES_MATCHING PATTERN "*.hpp" PATTERN "*.h")
+# ------------------------------------------------------------------------------
+# Install headers directly under include/
+# ------------------------------------------------------------------------------
 
-install(EXPORT ObjectHandlerTargets FILE ObjectHandlerTargets.cmake NAMESPACE ObjectHandler:: DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/ObjectHandler)
+install(DIRECTORY oh/
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/oh
+    FILES_MATCHING
+        PATTERN "*.hpp"
+        PATTERN "*.h"
+)
+
+# ------------------------------------------------------------------------------
+# Install CMake targets
+# ------------------------------------------------------------------------------
+
+install(EXPORT ObjectHandlerTargets
+    FILE ObjectHandlerTargets.cmake
+    NAMESPACE ObjectHandler::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/ObjectHandler
+)
+
+# ------------------------------------------------------------------------------
+# Package configuration
+# ------------------------------------------------------------------------------
 
 configure_package_config_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/cmake/ObjectHandlerConfig.cmake.in
